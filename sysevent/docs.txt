@@ -1,0 +1,22 @@
+Ce que l'application fait:
+
+Rechercher des évenements de type erreurs et critique dans le event log.
+
+
+Au lancement, demande le nombre de jours à remonter en arrière dans le event log. 
+En moyenne 30 jours semble raisonnable.
+
+Si aucun évènements n'est trouvé, un message s'affichera.
+
+Une barre de progression va s'afficher montrant le nombre d'éléments qui s'afficheront.
+
+Une fois la barre terminé, une grille s'affichera.
+
+Cette grille peut être filtrer par les colones et/ou un champs texte dans le haut.
+
+
+
+
+#####################################        Notes de versions       #########################################
+v1.0 -
+v1.1 - Ajout du message si aucun évènements trouvés
