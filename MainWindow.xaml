@@ -1,0 +1,28 @@
+﻿<Window x:Class="Optimisation_Nettoyage.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Optimisation_Nettoyage"
+        mc:Ignorable="d"
+        Title="Désinfection" Height="688" Width="1041" ResizeMode="CanMinimize" Icon="c:\_tech\Applications\source\images\Icone.ico" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="c:\_tech\Applications\Optimisation_Nettoyage\source\Background_opti.jpeg"/>
+        </Grid.Background>
+        <Button x:Name="btnUpdate" Content="Windows Update" HorizontalAlignment="Left" Margin="460,100,0,0" VerticalAlignment="Top" Height="55" Width="120" FontFamily="Microsoft Sans Serif" FontSize="12" Foreground="Black" Background="darkcyan" BorderThickness="2,2,2,2" FontWeight="Bold"/>
+        <Button x:Name="btnAutoruns" Content="Desinstaller programmes" HorizontalAlignment="Left" Margin="330,200,0,0" VerticalAlignment="Top" Height="55" Width="120" FontFamily="Microsoft Sans Serif" FontSize="12" Foreground="Black" Background="darkcyan" BorderThickness="2,2,2,2" FontWeight="Bold"/>
+        <Button x:Name="btnRevo" Content="Revo" HorizontalAlignment="Left" Margin="590,200,0,0" VerticalAlignment="Top" Height="55" Width="120" FontFamily="Microsoft Sans Serif" FontSize="12" Foreground="black" Background="darkcyan" BorderThickness="2,2,2,2" FontWeight="Bold"/>
+        <Button x:Name="btnHDD" Content="Nettoyage HDD" HorizontalAlignment="Left" Margin="200,300,0,0" VerticalAlignment="Top" Height="55" Width="120" FontFamily="Microsoft Sans Serif" FontSize="12" Foreground="Black" Background="darkcyan" BorderThickness="2,2,2,2" FontWeight="Bold"/>
+        <Button x:Name="btnCcleaner" Content="Ccleaner" HorizontalAlignment="Left" Margin="460,300,0,0" VerticalAlignment="Top" Height="55" Width="120" FontFamily="Microsoft Sans Serif" FontSize="12" Foreground="black" Background="darkcyan" BorderThickness="2,2,2,2" FontWeight="Bold"/>
+        <Button x:Name="btnsfc" Content="Fichiers corrompus" HorizontalAlignment="Left" Margin="670,300,0,0" VerticalAlignment="Top" Height="55" Width="120" FontFamily="Microsoft Sans Serif" FontSize="12" Foreground="black" Background="darkcyan" BorderThickness="2,2,2,2" FontWeight="Bold"/>
+        <Button x:Name="btnHitmanPro" Content="HitmanPro" HorizontalAlignment="Left" Margin="70,400,0,0" VerticalAlignment="Top" Height="55" Width="120" FontFamily="Microsoft Sans Serif" FontSize="12" Foreground="black" Background="darkcyan" BorderThickness="2,2,2,2" FontWeight="Bold"/>
+        <Button x:Name="btnSysEvent" Content="SysEvent" HorizontalAlignment="Left" Margin="330,400,0,0" VerticalAlignment="Top" Height="55" Width="120" FontFamily="Microsoft Sans Serif" FontSize="12" Foreground="black" Background="darkcyan" BorderThickness="2,2,2,2" FontWeight="Bold"/>
+        <Button x:Name="btnCrystalDiskInfo" Content="Verifier Sante HDD" HorizontalAlignment="Left" Margin="590,400,0,0" VerticalAlignment="Top" Height="55" Width="120" FontFamily="Microsoft Sans Serif" FontSize="12" Foreground="black" Background="darkcyan" BorderThickness="2,2,2,2" FontWeight="Bold"/>
+        <Button x:Name="btnHDTune" Content="Verifier Vitesse HDD" HorizontalAlignment="Left" Margin="850,400,0,0" VerticalAlignment="Top" Height="55" Width="120" FontFamily="Microsoft Sans Serif" FontSize="12" Foreground="black" Background="darkcyan" BorderThickness="2,2,2,2" FontWeight="Bold"/>
+        <Button x:Name="btnSysinfoz" Content="Sysinfo" HorizontalAlignment="Left" Margin="825,565,0,0" VerticalAlignment="Top" Height="55" Width="120" FontFamily="Microsoft Sans Serif" FontSize="12" Foreground="black" Background="darkcyan" BorderThickness="2,2,2,2" FontWeight="Bold"/>
+        <Button x:Name="btnQuit" Content="Quitter" HorizontalAlignment="Left" Margin="460,575,0,0" VerticalAlignment="Top" Height="55" Width="120" FontFamily="Microsoft Sans Serif" FontSize="12" Foreground="black" Background="darkred" BorderThickness="2,2,2,2" FontWeight="Bold"/>
+        <Button x:Name="btnMenu" Content="Menu principal" HorizontalAlignment="Left" Margin="25,35,0,0" VerticalAlignment="Top" Height="55" Width="120" FontFamily="Microsoft Sans Serif" FontSize="12" Foreground="black" Background="darkred" BorderThickness="2,2,2,2" FontWeight="Bold"/>
+        <Label x:Name="label" Width="325" Height="55" FontFamily="Microsoft Sans Serif" FontSize="16" Foreground="White" Background="DarkRed" Content="Choisissez une option" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="358,35,0,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+    </Grid>
+</Window>
