@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Optimisation_Nettoyage"
         mc:Ignorable="d"
-        Title="Désinfection" Height="688" Width="1041" ResizeMode="CanMinimize" Icon="c:\_tech\Applications\source\images\Icone.ico" WindowStartupLocation="CenterScreen">
+        Title="Optimisation et Nettoyage" Height="688" Width="1041" ResizeMode="CanMinimize" Icon="c:\_tech\Applications\source\images\Icone.ico" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="c:\_tech\Applications\Optimisation_Nettoyage\source\Background_opti.jpeg"/>
