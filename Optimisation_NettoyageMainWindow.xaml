@@ -10,9 +10,8 @@
         <ResourceDictionary Source="c:\_Tech\Applications\source\Resources.xaml"/>
     </Window.Resources>
     <Grid x:Name="gridOptimisation_Nettoyage">
-        <Grid.Background>
-            <ImageBrush ImageSource="c:\_tech\Applications\Optimisation_Nettoyage\source\Background_optimisation_Nettoyage.jpeg"/>
-        </Grid.Background>
+        <Image x:Name="imgBackGround_Optimisation_Nettoyage" Source="c:\_tech\Applications\Optimisation_Nettoyage\source\Background_optimisation_Nettoyage.jpeg" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Stretch="UniformToFill"/>
+        <Rectangle x:Name="rectBackGround" Fill="#4D000000"/>
         <Button x:Name="btnUpdate_Optimisation_Nettoyage" Content="Windows Update"  Style="{StaticResource ButtonStyle}" Margin="460,100,0,0"  Background="darkcyan"/>
         <Button x:Name="btnAutoruns_Optimisation_Nettoyage" Content="Logiciels démarrage"  Style="{StaticResource ButtonStyle}" Margin="330,200,0,0"  Background="darkcyan"/>
         <Button x:Name="btnRevo_Optimisation_Nettoyage" Content="Desinstaller Apps"  Style="{StaticResource ButtonStyle}" Margin="590,200,0,0"  Background="darkcyan"/>
