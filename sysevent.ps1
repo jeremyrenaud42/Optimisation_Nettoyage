@@ -1,4 +1,29 @@
 ﻿Add-Type -AssemblyName Microsoft.VisualBasic
+Add-Type -AssemblyName PresentationFramework
+
+# Bring a window to front
+Add-Type @"
+using System;
+using System.Runtime.InteropServices;
+public class Win32 {
+    [DllImport("user32.dll")]
+    public static extern bool SetForegroundWindow(IntPtr hWnd);
+}
+"@
+
+function Show-InputBoxFront {
+    param(
+        [string]$Prompt,
+        [string]$Title = "",
+        [string]$Default = ""
+    )
+
+    # Bring current process window to front before showing InputBox
+    $hwnd = (Get-Process -Id $PID).MainWindowHandle
+    [Win32]::SetForegroundWindow($hwnd) | Out-Null
+
+    return [Microsoft.VisualBasic.Interaction]::InputBox($Prompt, $Title, $Default)
+}
 
 function Get-MyApplicationEvent {
     param (
@@ -7,20 +32,11 @@ function Get-MyApplicationEvent {
 
     $days = $null
 
-    # Demander le nombre de jours via une boîte de dialogue
     do {
-        $inputDays = [Microsoft.VisualBasic.Interaction]::InputBox(
-            "Nombre de jours à remonter ? (Laissez vide ou entrez 'q' pour annuler)",
-            "Entrée requise"
-        )
+        $inputDays = Show-InputBoxFront "Nombre de jours à remonter ? (Laissez vide ou entrez 'q' pour annuler)" "Entrée requise"
 
         if ([string]::IsNullOrWhiteSpace($inputDays) -or $inputDays -match '^(q|quit)$') {
-            [System.Windows.MessageBox]::Show(
-                "Opération annulée par l'utilisateur.",
-                "Annulation",
-                'OK',
-                'Information'
-            ) | Out-Null
+            [System.Windows.MessageBox]::Show("Opération annulée par l'utilisateur.", "Annulation", 'OK', 'Information') | Out-Null
             return
         }
 
@@ -28,24 +44,13 @@ function Get-MyApplicationEvent {
             break
         }
         else {
-            [System.Windows.MessageBox]::Show(
-                "Veuillez entrer un nombre entier supérieur ou égal à 1.",
-                "Entrée invalide",
-                'OK',
-                'Warning'
-            ) | Out-Null
+            [System.Windows.MessageBox]::Show("Veuillez entrer un nombre entier supérieur ou égal à 1.", "Entrée invalide", 'OK', 'Warning') | Out-Null
         }
     } while ($true)
 
     $date = (Get-Date).AddDays(-$days)
-    [System.Windows.MessageBox]::Show(
-        "Obtention des évènements systèmes depuis le $date ...",
-        "Information",
-        'OK',
-        'Information'
-    ) | Out-Null
+    [System.Windows.MessageBox]::Show("Obtention des évènements systèmes depuis le $date ...", "Information", 'OK', 'Information') | Out-Null
 
-    # Récupération filtrée des événements
     $EventLog = Get-WinEvent -FilterHashtable @{LogName=$LogName; StartTime=$date} |
         Where-Object { $_.Level -in 1, 2 } |
         Where-Object { $_.ProviderName -notin @(
@@ -56,12 +61,7 @@ function Get-MyApplicationEvent {
         )}
 
     if (-not $EventLog) {
-        [System.Windows.MessageBox]::Show(
-            "Aucun évènement trouvé.",
-            "Résultat",
-            'OK',
-            'Warning'
-        ) | Out-Null
+        [System.Windows.MessageBox]::Show("Aucun évènement trouvé.", "Résultat", 'OK', 'Warning') | Out-Null
         return
     }
 
