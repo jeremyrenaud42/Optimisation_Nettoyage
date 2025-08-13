@@ -1,16 +1,26 @@
-﻿function Get-MyApplicationEvent {
+﻿Add-Type -AssemblyName Microsoft.VisualBasic
+
+function Get-MyApplicationEvent {
     param (
         [string]$LogName = 'System'
     )
 
     $days = $null
 
-    # Demander le nombre de jours avec option d'annulation
+    # Demander le nombre de jours via une boîte de dialogue
     do {
-        $inputDays = Read-Host "Nombre de jours à remonter ? (Entrée vide ou 'q' pour annuler)"
-        
+        $inputDays = [Microsoft.VisualBasic.Interaction]::InputBox(
+            "Nombre de jours à remonter ? (Laissez vide ou entrez 'q' pour annuler)",
+            "Entrée requise"
+        )
+
         if ([string]::IsNullOrWhiteSpace($inputDays) -or $inputDays -match '^(q|quit)$') {
-            Write-Host "Opération annulée par l'utilisateur."
+            [System.Windows.MessageBox]::Show(
+                "Opération annulée par l'utilisateur.",
+                "Annulation",
+                'OK',
+                'Information'
+            ) | Out-Null
             return
         }
 
@@ -18,12 +28,22 @@
             break
         }
         else {
-            Write-Host "Veuillez entrer un nombre entier supérieur ou égal à 1." -ForegroundColor Yellow
+            [System.Windows.MessageBox]::Show(
+                "Veuillez entrer un nombre entier supérieur ou égal à 1.",
+                "Entrée invalide",
+                'OK',
+                'Warning'
+            ) | Out-Null
         }
     } while ($true)
 
     $date = (Get-Date).AddDays(-$days)
-    Write-Host "Obtention des évènements systèmes depuis le $date ..." -ForegroundColor Cyan
+    [System.Windows.MessageBox]::Show(
+        "Obtention des évènements systèmes depuis le $date ...",
+        "Information",
+        'OK',
+        'Information'
+    ) | Out-Null
 
     # Récupération filtrée des événements
     $EventLog = Get-WinEvent -FilterHashtable @{LogName=$LogName; StartTime=$date} |
@@ -36,7 +56,12 @@
         )}
 
     if (-not $EventLog) {
-        Write-Host "Aucun évènement trouvé." -ForegroundColor Yellow
+        [System.Windows.MessageBox]::Show(
+            "Aucun évènement trouvé.",
+            "Résultat",
+            'OK',
+            'Warning'
+        ) | Out-Null
         return
     }
 
