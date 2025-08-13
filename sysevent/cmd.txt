@@ -1,3 +1,0 @@
---erreur event de tâches BITS
---bitsadmin /list
---bitsadmin /reset
